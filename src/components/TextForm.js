@@ -49,10 +49,10 @@ export default function TextForm(props) {
 
     return (
         <>
-            <div className="container">
+            <div className="container" style={{color : (props.mode === "light")? ("black") : ("white")}}>
                 <div className="mb-3 my-4">
                     <h3><u>{props.heading}</u></h3>
-                    <textarea className="form-control my-3" id="myBox" rows="9" placeholder='Enter text here...' value={text} onChange={handleOnChange}></textarea>
+                    <textarea className="form-control my-3" id="myBox" rows="9" placeholder='Enter text here...' value={text} onChange={handleOnChange} style={{backgroundColor : (props.mode === "light")? ("white") : ("#4f4b4b"), color : (props.mode === "light")? ("black") : ("white")}} ></textarea>
                 </div>
 
                 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
@@ -62,7 +62,7 @@ export default function TextForm(props) {
             </div>
 
 
-            <div className="container my-5">
+            <div className="container my-5" style={{color : (props.mode === "light")? ("black") : ("white")}}>
                 <h3><u>Your text Details</u></h3>
 
                 <p>Number of words : {text.split(" ").length}</p>
