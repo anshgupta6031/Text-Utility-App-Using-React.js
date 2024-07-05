@@ -40,6 +40,13 @@ export default function TextForm(props) {
     }
 
 
+    const copyText = () => {
+        console.log("Copy Text was clicked...")
+        document.getElementById("myBox").select()                      //  to select the copied part........
+        navigator.clipboard.writeText(text)
+    }
+
+
     return (
         <>
             <div className="container">
@@ -51,6 +58,7 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
                 <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to LowerCase</button>
                 <button className="btn btn-primary mx-1" onClick={clearText}>Clear Text</button>
+                <button className="btn btn-primary mx-1" onClick={copyText}>Copy Text</button>
             </div>
 
 

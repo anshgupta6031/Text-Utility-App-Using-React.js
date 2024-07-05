@@ -9,6 +9,7 @@ export default function About() {
     const [myStyle, setMyStyle] = useState({                        //  an object is set as a default state.....
         color : "black",
         backgroundColor : "white",
+        border : "1px solid black",
     })
 
     const [btnText, setBtnText] = useState("Enable Dark Mode")
@@ -22,14 +23,15 @@ export default function About() {
                 backgroundColor : "black",
                 border : "1px solid white",
             })
-
+            
             setBtnText("Enable Light Mode")
         }
-
+        
         else{
             setMyStyle({
                 color : "black",
                 backgroundColor : "white",
+                border : "1px solid black",
             })
 
             setBtnText("Enable Dark Mode")
