@@ -2,7 +2,7 @@
 
 
 
-import React, { useState } from 'react'                       //  useState is a hooke........
+import React, { useState } from 'react'                       //  useState is a hooke, which helps in creating a state variable....
 
 export default function TextForm(props) {
 
@@ -34,6 +34,12 @@ export default function TextForm(props) {
     }
 
 
+    const clearText = () => {
+        console.log("Clear Text was clicked...")
+        setText("")
+    }
+
+
     return (
         <>
             <div className="container">
@@ -42,8 +48,9 @@ export default function TextForm(props) {
                     <textarea className="form-control my-3" id="myBox" rows="9" placeholder='Enter text here...' value={text} onChange={handleOnChange}></textarea>
                 </div>
 
-                <button className="btn btn-primary mx-3" onClick={handleUpClick}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-3" onClick={handleLoClick}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
+                <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-1" onClick={clearText}>Clear Text</button>
             </div>
 
 
