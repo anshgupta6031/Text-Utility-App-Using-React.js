@@ -16,34 +16,42 @@ export default function TextForm(props) {
 
         // text = "new text"                                            //  wrong way to change the state........
         setText(newText)                //  correct way to change the state.....
+
+        props.showAlert("Converted to UpperCase!", "success")
     }
-
-
+    
+    
     const handleOnChange = (event) => {
         console.log("On change")
-
+        
         setText(event.target.value)                     //  updates the text after every change.....
     }
-
-
+    
+    
     const handleLoClick = () => {
         console.log("LowerCase was clicked...")
-
+        
         let newText = text.toLowerCase()
         setText(newText)
+
+        props.showAlert("Converted to LowerCase!", "success")
     }
-
-
+    
+    
     const clearText = () => {
         console.log("Clear Text was clicked...")
         setText("")
-    }
 
+        props.showAlert("Text Cleared!", "success")
+    }
+    
 
     const copyText = () => {
         console.log("Copy Text was clicked...")
         document.getElementById("myBox").select()                      //  to select the copied part........
         navigator.clipboard.writeText(text)
+
+        props.showAlert("Copied to Clipboard!", "success")
     }
 
 
@@ -52,7 +60,7 @@ export default function TextForm(props) {
             <div className="container" style={{color : (props.mode === "light")? ("black") : ("white")}}>
                 <div className="mb-3 my-4">
                     <h3><u>{props.heading}</u></h3>
-                    <textarea className="form-control my-3" id="myBox" rows="9" placeholder='Enter text here...' value={text} onChange={handleOnChange} style={{backgroundColor : (props.mode === "light")? ("white") : ("#4f4b4b"), color : (props.mode === "light")? ("black") : ("white")}} ></textarea>
+                    <textarea className={`form-control my-3 ${(props.mode === "dark")? "placeWhite" : "placeBlack"}`} id="myBox" rows="9" placeholder='Enter text here...' value={text} onChange={handleOnChange} style={{backgroundColor : (props.mode === "light")? ("white") : ("#4f4b4b"), color : (props.mode === "light")? ("black") : ("white")}} ></textarea>
                 </div>
 
                 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
