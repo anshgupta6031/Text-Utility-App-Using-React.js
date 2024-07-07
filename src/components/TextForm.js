@@ -48,7 +48,7 @@ export default function TextForm(props) {
 
     const copyText = () => {
         console.log("Copy Text was clicked...")
-        document.getElementById("myBox").select()                      //  to select the copied part........
+    //  document.getElementById("myBox").select()                      //  to select the copied part........
         navigator.clipboard.writeText(text)
 
         props.showAlert("Copied to Clipboard!", "success")
@@ -63,17 +63,17 @@ export default function TextForm(props) {
                     <textarea className={`form-control my-3 ${(props.mode === "dark")? "placeWhite" : "placeBlack"}`} id="myBox" rows="9" placeholder='Enter text here...' value={text} onChange={handleOnChange} style={{backgroundColor : (props.mode === "light")? ("white") : ("#4f4b4b"), color : (props.mode === "light")? ("black") : ("white")}} ></textarea>
                 </div>
 
-                <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to LowerCase</button>
-                <button className="btn btn-primary mx-1" onClick={clearText}>Clear Text</button>
-                <button className="btn btn-primary mx-1" onClick={copyText}>Copy Text</button>
+                <button disabled={text.length===0} className={`btn btn-${(props.mode === "light")? ("primary") : ("secondary")} mx-1 my-1`} onClick={handleUpClick}>Convert to UpperCase</button>
+                <button disabled={text.length===0} className={`btn btn-${(props.mode === "light")? ("primary") : ("secondary")} mx-1 my-1`} onClick={handleLoClick}>Convert to LowerCase</button>
+                <button disabled={text.length===0} className={`btn btn-${(props.mode === "light")? ("primary") : ("secondary")} mx-1 my-1`} onClick={clearText}>Clear Text</button>
+                <button disabled={text.length===0} className={`btn btn-${(props.mode === "light")? ("primary") : ("secondary")} mx-1 my-1`} onClick={copyText}>Copy Text</button>
             </div>
 
 
             <div className="container my-5" style={{color : (props.mode === "light")? ("black") : ("white")}}>
                 <h3><u>Your text Details</u></h3>
 
-                <p>Number of words : {text.split(" ").length}</p>
+                <p>Number of words : {text.split(/\s+/).filter((element)=>{return element.length !== 0}).length}</p>
                 <p>Number of characters : {text.length}</p>
             </div>
         </>
